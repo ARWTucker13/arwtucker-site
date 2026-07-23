@@ -54,6 +54,15 @@ export const courses: Course[] = [
   },
 ];
 
+export const featuredLabs = {
+  name: "Econometrics for Health Policy — Interactive Modules",
+  // Default Vercel domain — update after importing the repo if it differs.
+  liveUrl: "https://econometrics-for-health-policy.vercel.app",
+  repoUrl: "https://github.com/ARWTucker13/econometrics-for-health-policy",
+  description:
+    "A module series that teaches econometrics through health problems — OLS, standard errors and clustering, inference, omitted variable bias, and panel data — with graded R exercises that run directly in the browser. No installation, no setup: open a module and start estimating.",
+};
+
 export const featuredTool = {
   name: "Health System Control Knobs",
   liveUrl: "https://healthsystems.vercel.app",

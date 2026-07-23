@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import SectionLabel from "@/components/SectionLabel";
-import { courses, featuredTool, teachingHighlights } from "@/content/teaching";
+import {
+  courses,
+  featuredLabs,
+  featuredTool,
+  teachingHighlights,
+} from "@/content/teaching";
 
 export const metadata: Metadata = {
   title: "Teaching — Austin Tucker",
@@ -28,6 +33,32 @@ export default function TeachingPage() {
             600-student undergraduate lecture course.
           </p>
         </div>
+      </section>
+
+      <section className="border-t border-rule py-14">
+        <Reveal>
+          <SectionLabel>Interactive labs</SectionLabel>
+          <div className="figure-frame graph-paper mt-4 max-w-3xl p-6 sm:p-8">
+            <h2 className="font-serif text-2xl font-semibold">
+              {featuredLabs.name}
+            </h2>
+            <p className="prose-site mt-3">{featuredLabs.description}</p>
+            <div className="mt-6 flex flex-wrap gap-3 font-mono text-sm">
+              <a
+                href={featuredLabs.liveUrl}
+                className="border border-teal bg-teal px-4 py-2 text-white hover:bg-teal-deep"
+              >
+                Open the labs →
+              </a>
+              <a
+                href={featuredLabs.repoUrl}
+                className="border border-rule bg-paper-raised px-4 py-2 text-ink-soft hover:border-teal hover:text-teal"
+              >
+                Source on GitHub
+              </a>
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       <section className="border-t border-rule py-14">
