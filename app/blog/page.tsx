@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import SectionLabel from "@/components/SectionLabel";
 import { fetchSubstackPosts, formatDate } from "@/lib/substack";
 import { site } from "@/content/site";
@@ -16,10 +17,21 @@ export default async function BlogPage() {
     <div className="mx-auto max-w-5xl px-5">
       <section className="py-16">
         <SectionLabel index="03">Blog</SectionLabel>
-        <h1 className="mt-3 font-serif text-3xl font-semibold leading-tight sm:text-4xl">
-          Occupational{" "}
-          <span className="text-hazard">Hazard</span> Ratios
-        </h1>
+        <div className="mt-3 flex items-center gap-6">
+          <div className="figure-frame shrink-0 p-1">
+            <Image
+              src="/ohr-logo.png"
+              alt="Occupational Hazard Ratios logo — four panels showing a worker in a hard hat, a network diagram, a DNA helix, and a heart with a medical cross"
+              width={104}
+              height={104}
+              priority
+            />
+          </div>
+          <h1 className="font-serif text-3xl font-semibold leading-tight sm:text-4xl">
+            Occupational{" "}
+            <span className="text-hazard">Hazard</span> Ratios
+          </h1>
+        </div>
         <div className="prose-site mt-6 max-w-2xl">
           <p>
             An epidemiologist&apos;s hazard ratio measures how much more likely
