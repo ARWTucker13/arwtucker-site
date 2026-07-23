@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.makingsoftware.com)",
+      "WebSearch",
+      "mcp__claude_ai_Google_Drive__search_files",
+      "WebFetch(domain:occupationalhazardratio.substack.com)",
+      "WebFetch(domain:pubmed.ncbi.nlm.nih.gov)",
+      "mcp__claude_ai_Gmail__search_threads",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:www.linkedin.com)",
+      "mcp__claude_ai_Gmail__get_thread",
+      "mcp__claude_ai_Google_Drive__read_file_content",
+      "Bash(gh api *)",
+      "mcp__claude_ai_PubMed__search_articles",
+      "WebFetch(domain:scholar.google.com)",
+      "Bash(mdfind -name 'Austin Tucker - CV')",
+      "Bash(mdfind 'kMDItemFSName == \"*CV*\"c && kMDItemFSName == \"*Tucker*\"c')",
+      "Bash(npm --version)",
+      "Bash(brew install *)",
+      "Bash(npx --yes create-next-app@latest . --typescript --eslint --app --tailwind --no-src-dir --import-alias \"@/*\" --use-npm --turbopack --yes)"
+    ]
+  }
+}

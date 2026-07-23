@@ -1,65 +1,155 @@
-import Image from "next/image";
+import Link from "next/link";
+import Reveal from "@/components/Reveal";
+import SectionLabel from "@/components/SectionLabel";
+import { workingPapers } from "@/content/papers";
+import { publicationSummary } from "@/content/publications";
+import { site } from "@/content/site";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="mx-auto max-w-5xl px-5">
+      {/* Hero */}
+      <section className="graph-paper -mx-5 border-b border-rule px-5 py-20 sm:py-28">
+        <div className="mx-auto max-w-3xl">
+          <p className="section-label mb-6">
+            Health economics · Global health · Econometrics
           </p>
+          <h1 className="font-serif text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+            Hi, I&apos;m Austin Tucker.
+          </h1>
+          <div className="prose-site mt-6 max-w-2xl">
+            <p>
+              I&apos;m a health economist and PhD candidate at Harvard studying
+              how healthcare labor markets work — and what happens to patients
+              when they don&apos;t. My dissertation asks who takes care of us
+              when the caregiving workforce is squeezed: by school closures, by
+              immigration policy, by the daily realities of understaffed
+              delivery wards.
+            </p>
+            <p>
+              Before that, I spent years measuring the{" "}
+              {publicationSummary.focus} — work published in{" "}
+              {publicationSummary.venues}.
+            </p>
+          </div>
+          <div className="mt-8 flex flex-wrap gap-3 font-mono text-sm">
+            <Link
+              href="/research"
+              className="border border-teal bg-teal px-4 py-2 text-white hover:bg-teal-deep"
+            >
+              Read the research →
+            </Link>
+            <a
+              href={site.cvPath}
+              className="border border-rule bg-paper-raised px-4 py-2 text-ink-soft hover:border-teal hover:text-teal"
+            >
+              CV (PDF)
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Research preview */}
+      <section className="py-16">
+        <Reveal>
+          <SectionLabel index="01">Research</SectionLabel>
+          <h2 className="mt-3 font-serif text-2xl font-semibold">
+            Who cares for us, and what is that work worth?
+          </h2>
+          <p className="mt-2 max-w-2xl text-ink-soft">
+            Three dissertation papers on healthcare labor markets, workforce
+            shortages, and the substitutability of care.
+          </p>
+        </Reveal>
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          {workingPapers.map((paper, i) => (
+            <Reveal key={paper.slug} delay={i * 90}>
+              <Link
+                href={`/research#${paper.slug}`}
+                className="figure-frame block h-full p-5 transition-colors hover:border-teal"
+              >
+                <p className="font-mono text-xs text-hazard">
+                  PAPER {paper.number} · {paper.status.toUpperCase()}
+                </p>
+                <h3 className="mt-3 font-serif text-lg font-semibold leading-snug">
+                  {paper.shortTitle}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+                  {paper.question}
+                </p>
+              </Link>
+            </Reveal>
+          ))}
         </div>
-      </main>
+      </section>
+
+      {/* Teaching + Blog + Code, compact row */}
+      <section className="grid gap-10 border-t border-rule py-16 sm:grid-cols-3">
+        <Reveal>
+          <SectionLabel index="02">Teaching</SectionLabel>
+          <h3 className="mt-3 font-serif text-xl font-semibold">
+            Econometrics, taught through health
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+            Labs, problem sets, and case studies from four years of teaching
+            econometrics and global health at Harvard — three Certificates of
+            Distinction along the way.
+          </p>
+          <Link
+            href="/teaching"
+            className="mt-3 inline-block font-mono text-sm text-teal hover:underline"
+          >
+            Browse the portfolio →
+          </Link>
+        </Reveal>
+        <Reveal delay={90}>
+          <SectionLabel index="03">Blog</SectionLabel>
+          <h3 className="mt-3 font-serif text-xl font-semibold">
+            Occupational Hazard Ratios
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+            Essays and data stories on health, work, and the economics of who
+            takes care of whom.
+          </p>
+          <Link
+            href="/blog"
+            className="mt-3 inline-block font-mono text-sm text-teal hover:underline"
+          >
+            Latest posts →
+          </Link>
+        </Reveal>
+        <Reveal delay={180}>
+          <SectionLabel index="04">Code</SectionLabel>
+          <h3 className="mt-3 font-serif text-xl font-semibold">
+            Analysis in the open
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+            Replication code, teaching labs, and works in progress on GitHub.
+          </p>
+          <Link
+            href="/code"
+            className="mt-3 inline-block font-mono text-sm text-teal hover:underline"
+          >
+            See what I&apos;m building →
+          </Link>
+        </Reveal>
+      </section>
+
+      {/* Now */}
+      <section className="border-t border-rule py-16">
+        <Reveal>
+          <SectionLabel>Now</SectionLabel>
+          <div className="prose-site mt-4 max-w-2xl">
+            <p>
+              I&apos;m finishing my dissertation (defense expected early 2027)
+              and looking for roles where careful measurement meets real
+              decisions — in global health policy, multilateral organizations,
+              and research-driven teams. If that sounds like your work,{" "}
+              <a href={`mailto:${site.email}`}>I&apos;d love to hear from you</a>.
+            </p>
+          </div>
+        </Reveal>
+      </section>
     </div>
   );
 }

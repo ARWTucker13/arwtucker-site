@@ -1,26 +1,114 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Paper & ink — warm, print-like base */
+  --paper: #faf7f1;
+  --paper-raised: #ffffff;
+  --ink: #211d16;
+  --ink-soft: #5c554a;
+  --ink-faint: #8a8272;
+  --rule: #e3ddd0;
+
+  /* Accents */
+  --teal: #0f6e5f; /* links, primary accent */
+  --teal-deep: #0a4f45;
+  --hazard: #d9541e; /* "Occupational Hazard" orange — blog + highlights */
+  --hazard-soft: #f7e3d8;
+  --grid-line: rgba(15, 110, 95, 0.08);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-rule: var(--rule);
+  --color-teal: var(--teal);
+  --color-teal-deep: var(--teal-deep);
+  --color-hazard: var(--hazard);
+  --color-hazard-soft: var(--hazard-soft);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-source-serif);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--hazard-soft);
+  color: var(--ink);
+}
+
+/* --- Technical-manual utilities ------------------------------------- */
+
+/* Graph-paper backdrop for figures and hero panels */
+.graph-paper {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Mono section label, e.g. "01 / RESEARCH" */
+.section-label {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* Figure frame — thin double border like a manual diagram */
+.figure-frame {
+  border: 1px solid var(--rule);
+  outline: 1px solid var(--rule);
+  outline-offset: 3px;
+  background: var(--paper-raised);
+}
+
+/* Long-form prose */
+.prose-site {
+  font-family: var(--font-source-serif), Georgia, serif;
+  font-size: 1.075rem;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.prose-site p + p {
+  margin-top: 1.1em;
+}
+.prose-site a {
+  color: var(--teal);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 3px;
+}
+.prose-site a:hover {
+  text-decoration-color: var(--teal);
+}
+
+/* --- Scroll reveal --------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
