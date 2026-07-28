@@ -1,0 +1,290 @@
+/* ============================================================
+   CONSTRUCTIVIST BENTO — De Stijl × Stella × archive postcards
+   Block A: token overrides (promotion = paste into :root)
+   ============================================================ */
+.theme-bento {
+  --paper: #131110;
+  --paper-raised: #1d1a17;
+  --ink: #efe6d5;
+  --ink-soft: #b8ab93;
+  --ink-faint: #7e7361;
+  --rule: #322d27;
+
+  --teal: #d9c14f; /* accent slot → mustard */
+  --teal-deep: #b59f36;
+  --hazard: #c8442c; /* secondary slot → vermilion */
+  --hazard-soft: #3a1f19;
+  --grid-line: transparent;
+
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-jetbrains-mono);
+
+  /* variant-only card palette */
+  --card-mustard: #d9c14f;
+  --card-vermilion: #c8442c;
+  --card-cobalt: #3d64b0;
+  --card-sage: #7b8d6c;
+  --card-rose: #c08d80;
+  --card-ink: #221d14; /* dark ink used on colored cards */
+  --panel-ink: #f7e9c7; /* cream text on saturated cards */
+  --blueprint: #2b49c7; /* manual-fusion figure ink (light cards) */
+  --blueprint-light: #93a9ef; /* manual-fusion figure ink (dark cards) */
+}
+
+.theme-bento {
+  font-family: var(--font-body), monospace;
+  font-size: 0.95rem;
+}
+
+/* ============================================================
+   Block B: variant components (promotion = strip prefix)
+   ============================================================ */
+
+/* Bento card base */
+.theme-bento .bn-card {
+  border-radius: 14px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mono topic label, e.g. "AI / ETHICS" */
+.theme-bento .bn-label {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+/* Dashed postal stamp */
+.theme-bento .bn-stamp {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1.5px dashed currentColor;
+  padding: 0.55rem 0.7rem;
+  text-align: center;
+  line-height: 1.5;
+  max-width: 9.5rem;
+  transform: rotate(6deg);
+  opacity: 0.75;
+}
+
+/* Ruled address lines */
+.theme-bento .bn-lines {
+  height: 3.2rem;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 15px,
+    currentColor 15px,
+    currentColor 16px
+  );
+  opacity: 0.35;
+}
+
+/* Vertical mono metadata */
+.theme-bento .bn-vertical {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  opacity: 0.7;
+}
+
+/* De Stijl geometry behind the intro */
+.theme-bento .bn-square {
+  position: absolute;
+  background: var(--card-vermilion);
+}
+.theme-bento .bn-circle {
+  position: absolute;
+  border-radius: 9999px;
+  background: var(--card-cobalt);
+}
+
+/* Italic serif pull-quote / research question */
+.theme-bento .bn-question {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-style: italic;
+}
+
+/* Serif display heads on cards */
+.theme-bento .bn-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+}
+
+/* --- Manual fusion: blueprint figures inside bento cards ---------- */
+/* Used for econometrics/teaching material: the field-manual language
+   survives as content illustration inside the bento system. */
+.theme-bento .bn-fig {
+  position: relative;
+  border: 1px dotted color-mix(in srgb, var(--blueprint) 60%, transparent);
+  background-color: rgba(255, 253, 245, 0.55);
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--blueprint) 16%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 10px 10px;
+}
+.theme-bento .bn-fig::before,
+.theme-bento .bn-fig::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--blueprint);
+  border-style: solid;
+}
+.theme-bento .bn-fig::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+.theme-bento .bn-fig::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+.theme-bento .bn-figlabel {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blueprint);
+}
+
+.theme-bento .bn-fig-stroke {
+  stroke: var(--blueprint);
+  fill: none;
+  stroke-width: 1.3;
+}
+.theme-bento .bn-fig-stroke-dashed {
+  stroke: var(--blueprint);
+  fill: none;
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+.theme-bento .bn-fig-dot {
+  fill: var(--blueprint);
+}
+.theme-bento .bn-fig-text {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.1em;
+  fill: var(--blueprint);
+}
+
+/* Numbered materials list, manual style */
+.theme-bento .bn-matlist {
+  counter-reset: mat;
+}
+.theme-bento .bn-matlist li {
+  counter-increment: mat;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.8rem;
+  padding: 0.55rem 0;
+  border-top: 1px dotted color-mix(in srgb, currentColor 40%, transparent);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+.theme-bento .bn-matlist li::before {
+  content: counter(mat, decimal-leading-zero);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  padding-top: 0.15rem;
+  opacity: 0.65;
+}
+
+/* --- Reading sub-theme: cream editorial pages for individual papers --
+   Wraps a paper page in warm paper tokens (FT × Asterisk legibility)
+   while staying inside the bento world. Per-paper accent comes in via
+   inline --accent / --accent-soft custom properties. */
+.theme-bento .bn-reading {
+  --paper: #f6f1e6;
+  --paper-raised: #fffdf5;
+  --ink: #1a1510;
+  --ink-soft: #574a3c;
+  --ink-faint: #8d7e6a;
+  --rule: #d8cbb4;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-newsreader), Georgia, serif;
+}
+
+.theme-bento .bn-reading .rd-kicker {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.theme-bento .bn-reading .rd-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.12;
+}
+.theme-bento .bn-reading .rd-standfirst {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+/* FT-style heavy-over-hairline rule */
+.theme-bento .bn-reading .rd-rule {
+  border-top: 2px solid var(--ink);
+  position: relative;
+}
+.theme-bento .bn-reading .rd-rule::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 0;
+  right: 0;
+  border-top: 1px solid var(--ink);
+}
+.theme-bento .bn-reading .rd-prose {
+  font-size: 1.125rem;
+  line-height: 1.85;
+}
+.theme-bento .bn-reading .rd-prose p + p {
+  margin-top: 1.1em;
+}
+.theme-bento .bn-reading .rd-dropcap::first-letter {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 600;
+  float: left;
+  font-size: 3.3em;
+  line-height: 0.82;
+  padding-right: 0.09em;
+  padding-top: 0.05em;
+  color: var(--accent);
+}
+.theme-bento .bn-reading ::selection {
+  background: var(--accent-soft);
+}
+
+/* Italic serif nav links */
+.theme-bento .bn-nav-link {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-style: italic;
+  font-size: 1.9rem;
+  line-height: 1.15;
+  display: block;
+}
+.theme-bento .bn-nav-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1.5px;
+}

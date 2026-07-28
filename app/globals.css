@@ -15,6 +15,11 @@
   --hazard: #d9541e; /* "Occupational Hazard" orange — blog + highlights */
   --hazard-soft: #f7e3d8;
   --grid-line: rgba(15, 110, 95, 0.08);
+
+  /* Semantic font slots — themes swap these, not the next/font variables */
+  --font-display: var(--font-source-serif);
+  --font-body: var(--font-inter);
+  --font-code: var(--font-jetbrains-mono);
 }
 
 @theme inline {
@@ -29,15 +34,15 @@
   --color-hazard: var(--hazard);
   --color-hazard-soft: var(--hazard-soft);
 
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-source-serif);
-  --font-mono: var(--font-jetbrains-mono);
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-display);
+  --font-mono: var(--font-code);
 }
 
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -58,7 +63,7 @@ body {
 
 /* Mono section label, e.g. "01 / RESEARCH" */
 .section-label {
-  font-family: var(--font-jetbrains-mono), monospace;
+  font-family: var(--font-code), monospace;
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -75,7 +80,7 @@ body {
 
 /* Long-form prose */
 .prose-site {
-  font-family: var(--font-source-serif), Georgia, serif;
+  font-family: var(--font-display), Georgia, serif;
   font-size: 1.075rem;
   line-height: 1.75;
   color: var(--ink);

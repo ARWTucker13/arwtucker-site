@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Source_Serif_4 } from "next/font/google";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -30,11 +28,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${sourceSerif.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-      </body>
+      <body className="min-h-full">{children}</body>
     </html>
   );
 }

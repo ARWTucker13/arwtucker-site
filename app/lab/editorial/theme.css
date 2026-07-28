@@ -1,0 +1,126 @@
+/* ============================================================
+   EDITORIAL MAGAZINE — Asterisk × FT × Works in Progress
+   Block A: token overrides (promotion = paste into :root)
+   ============================================================ */
+.theme-editorial {
+  --paper: #f6f1e6;
+  --paper-raised: #fffdf5;
+  --ink: #1a1510;
+  --ink-soft: #574a3c;
+  --ink-faint: #8d7e6a;
+  --rule: #d8cbb4;
+
+  --teal: #8c2f1b; /* accent slot → oxblood */
+  --teal-deep: #611f10;
+  --hazard: #1f4d8c; /* secondary slot → cobalt */
+  --hazard-soft: #e5ecf6;
+  --grid-line: transparent;
+
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-newsreader);
+
+  /* variant-only */
+  --panel: #ad3a21; /* hero brick */
+  --panel-ink: #f7e9c7; /* cream on brick */
+  --gold: #c8952e;
+  --collage-orange: #d97b2c;
+  --collage-blue: #3d64b0;
+}
+
+.theme-editorial {
+  font-family: var(--font-body), Georgia, serif;
+  font-size: 1.0625rem;
+}
+
+/* ============================================================
+   Block B: variant components (promotion = strip prefix)
+   ============================================================ */
+
+/* Small-caps letterspaced kicker — mono replaced by spaced caps */
+.theme-editorial .ed-kicker {
+  font-family: var(--font-code), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* FT-style section rule: heavy over hairline */
+.theme-editorial .ed-rule {
+  border-top: 2px solid var(--ink);
+  position: relative;
+}
+.theme-editorial .ed-rule::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 0;
+  right: 0;
+  border-top: 1px solid var(--ink);
+}
+
+/* Dotted separator, FT top-stories style */
+.theme-editorial .ed-dotted {
+  border-top: 1px dotted var(--ink-faint);
+}
+
+/* Drop cap on opening paragraph */
+.theme-editorial .ed-dropcap > p:first-of-type::first-letter {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 600;
+  float: left;
+  font-size: 3.4em;
+  line-height: 0.82;
+  padding-right: 0.09em;
+  padding-top: 0.04em;
+  color: var(--teal);
+}
+
+/* Story cell: hairline column dividers on wide screens */
+.theme-editorial .ed-cells > * + * {
+  border-top: 1px solid var(--rule);
+}
+@media (min-width: 640px) {
+  .theme-editorial .ed-cells > * + * {
+    border-top: none;
+    border-left: 1px solid var(--rule);
+  }
+}
+
+/* Italic display accent inside prose */
+.theme-editorial .ed-accent {
+  font-family: var(--font-display), Georgia, serif;
+  font-style: italic;
+  color: var(--teal);
+}
+.theme-editorial .ed-accent-2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* Asterisk section divider */
+.theme-editorial .ed-asterisk {
+  font-family: var(--font-display), Georgia, serif;
+  color: var(--teal);
+  font-size: 1.6rem;
+  letter-spacing: 0.6em;
+}
+
+/* Long-form prose tuned for Newsreader */
+.theme-editorial .ed-prose {
+  font-family: var(--font-body), Georgia, serif;
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+.theme-editorial .ed-prose p + p {
+  margin-top: 1.1em;
+}
+.theme-editorial .ed-prose a {
+  color: var(--teal);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 3px;
+}
+.theme-editorial .ed-prose a:hover {
+  text-decoration-color: var(--teal);
+}
