@@ -1,154 +1,187 @@
 import Link from "next/link";
-import Reveal from "@/components/Reveal";
-import SectionLabel from "@/components/SectionLabel";
 import { workingPapers } from "@/content/papers";
-import { publicationSummary } from "@/content/publications";
 import { site } from "@/content/site";
+
+const paperCards = [
+  { bg: "var(--card-sage)", topic: "Labor / Long-term care" },
+  { bg: "var(--card-cobalt)", topic: "Quality / Kenya" },
+  { bg: "var(--card-rose)", topic: "Capital / Migration" },
+];
 
 export default function Home() {
   return (
-    <div className="mx-auto max-w-5xl px-5">
-      {/* Hero */}
-      <section className="graph-paper -mx-5 border-b border-rule px-5 py-20 sm:py-28">
-        <div className="mx-auto max-w-3xl">
-          <p className="section-label mb-6">
-            Health economics · Global health · Econometrics
-          </p>
-          <h1 className="font-serif text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-            Hi, I&apos;m Austin Tucker.
-          </h1>
-          <div className="prose-site mt-6 max-w-2xl">
-            <p>
-              I&apos;m a health economist and PhD candidate at Harvard studying
-              how healthcare labor markets work — and what happens to patients
-              when they don&apos;t. My dissertation asks who takes care of us
-              when the caregiving workforce is squeezed: by school closures, by
-              immigration policy, by the daily realities of understaffed
-              delivery wards.
-            </p>
-            <p>
-              Before that, I spent years measuring the{" "}
-              {publicationSummary.focus} — work published in{" "}
-              {publicationSummary.venues}.
+    <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
+      {/* Row 1: intro + nav */}
+      <div className="grid gap-4 lg:grid-cols-12">
+        <section className="bn-card bg-paper-raised lg:col-span-8">
+          <div
+            aria-hidden
+            className="bn-square left-[16%] top-[18%] h-44 w-44 opacity-90"
+          />
+          <div
+            aria-hidden
+            className="bn-circle right-[14%] top-[26%] h-48 w-48"
+          />
+          <div className="relative">
+            <p className="bn-label text-ink-soft">Field notes — 2026</p>
+            <h1 className="bn-display mt-16 text-6xl text-ink sm:text-7xl">
+              Austin
+              <br />
+              Tucker
+            </h1>
+            <p className="mt-14 max-w-md leading-relaxed text-ink-soft">
+              PhD candidate, health economics, Harvard. Studying who takes
+              care of us when the caregiving workforce is squeezed — and what
+              that work is worth.
             </p>
           </div>
-          <div className="mt-8 flex flex-wrap gap-3 font-mono text-sm">
-            <Link
-              href="/research"
-              className="border border-teal bg-teal px-4 py-2 text-white hover:bg-teal-deep"
-            >
-              Read the research →
-            </Link>
-            <a
-              href={site.cvPath}
-              className="border border-rule bg-paper-raised px-4 py-2 text-ink-soft hover:border-teal hover:text-teal"
-            >
-              CV (PDF)
-            </a>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Research preview */}
-      <section className="py-16">
-        <Reveal>
-          <SectionLabel index="01">Research</SectionLabel>
-          <h2 className="mt-3 font-serif text-2xl font-semibold">
-            Who cares for us, and what is that work worth?
-          </h2>
-          <p className="mt-2 max-w-2xl text-ink-soft">
-            Three dissertation papers on healthcare labor markets, workforce
-            shortages, and the substitutability of care.
-          </p>
-        </Reveal>
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          {workingPapers.map((paper, i) => (
-            <Reveal key={paper.slug} delay={i * 90}>
-              <Link
-                href={`/research#${paper.slug}`}
-                className="figure-frame block h-full p-5 transition-colors hover:border-teal"
-              >
-                <p className="font-mono text-xs text-hazard">
-                  PAPER {paper.number} · {paper.status.toUpperCase()}
-                </p>
-                <h3 className="mt-3 font-serif text-lg font-semibold leading-snug">
-                  {paper.shortTitle}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-                  {paper.question}
-                </p>
+        <nav className="bn-card flex flex-col bg-(--card-vermilion) text-(--panel-ink) lg:col-span-4">
+          <div className="flex flex-1 items-start justify-between">
+            <div className="flex flex-col gap-5 pt-6">
+              <Link href="/research" className="bn-nav-link">
+                Research
               </Link>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+              <Link href="/teaching" className="bn-nav-link">
+                Teaching
+              </Link>
+              <Link href="/blog" className="bn-nav-link">
+                Blog
+              </Link>
+              <Link href="/code" className="bn-nav-link">
+                Code
+              </Link>
+            </div>
+            <p className="bn-vertical pt-2">
+              Portfolio &amp; logs // v.2026 // Cambridge MA
+            </p>
+          </div>
+          <p className="bn-label mt-8">{site.email}</p>
+        </nav>
+      </div>
 
-      {/* Teaching + Blog + Code, compact row */}
-      <section className="grid gap-10 border-t border-rule py-16 sm:grid-cols-3">
-        <Reveal>
-          <SectionLabel index="02">Teaching</SectionLabel>
-          <h3 className="mt-3 font-serif text-xl font-semibold">
+      {/* Research heading */}
+      <div className="mt-12 flex items-center gap-4">
+        <span aria-hidden className="h-9 w-1.5 bg-(--card-vermilion)" />
+        <h2 className="bn-display text-4xl text-ink">
+          Field Notes &amp; Research
+        </h2>
+      </div>
+
+      {/* Row 2: paper postcards */}
+      <div className="mt-6 grid gap-4 sm:grid-cols-3">
+        {workingPapers.map((paper, i) => (
+          <Link
+            key={paper.slug}
+            href={`/research/${paper.slug}`}
+            className="bn-card group flex min-h-[17rem] flex-col text-(--card-ink) transition-transform hover:-translate-y-1"
+            style={{ background: paperCards[i].bg }}
+          >
+            <div className="flex items-start justify-between">
+              <p className="bn-label">{paperCards[i].topic}</p>
+              <p className="bn-stamp">
+                Paper
+                <br />
+                {paper.number}
+              </p>
+            </div>
+            <h3 className="bn-display mt-6 text-3xl">{paper.shortTitle}</h3>
+            <p className="mt-4 flex-1 text-sm leading-relaxed opacity-80">
+              {paper.question}
+            </p>
+            <p className="mt-5 text-lg transition-transform group-hover:translate-x-1">
+              →
+            </p>
+          </Link>
+        ))}
+      </div>
+
+      {/* Row 3: teaching / blog / code */}
+      <div className="mt-4 grid gap-4 lg:grid-cols-12">
+        <Link
+          href="/teaching"
+          className="bn-card flex flex-col bg-(--card-mustard) text-(--card-ink) transition-transform hover:-translate-y-1 lg:col-span-5"
+        >
+          <div className="flex items-start justify-between">
+            <p className="bn-label">Teaching / Harvard</p>
+            <p className="bn-stamp">
+              3× Distinction
+              <br />
+              2022–24
+            </p>
+          </div>
+          <h3 className="bn-display mt-6 text-3xl">
             Econometrics, taught through health
           </h3>
-          <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-            Labs, problem sets, and case studies from four years of teaching
-            econometrics and global health at Harvard — three Certificates of
-            Distinction along the way.
+          <p className="mt-4 flex-1 text-sm leading-relaxed opacity-80">
+            Interactive labs that run R in the browser, problem sets, and case
+            studies from four years of teaching.
           </p>
-          <Link
-            href="/teaching"
-            className="mt-3 inline-block font-mono text-sm text-teal hover:underline"
-          >
-            Browse the portfolio →
-          </Link>
-        </Reveal>
-        <Reveal delay={90}>
-          <SectionLabel index="03">Blog</SectionLabel>
-          <h3 className="mt-3 font-serif text-xl font-semibold">
+          <div className="bn-lines mt-6" aria-hidden />
+        </Link>
+
+        <Link
+          href="/blog"
+          className="bn-card flex flex-col bg-paper-raised transition-transform hover:-translate-y-1 lg:col-span-4"
+        >
+          <div
+            aria-hidden
+            className="bn-square right-6 top-6 h-14 w-14 opacity-90"
+          />
+          <p className="bn-label text-ink-soft">Journal / Substack</p>
+          <h3 className="bn-display mt-6 text-3xl italic text-ink">
             Occupational Hazard Ratios
           </h3>
-          <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+          <p className="mt-4 flex-1 text-sm leading-relaxed text-ink-soft">
             Essays and data stories on health, work, and the economics of who
             takes care of whom.
           </p>
-          <Link
-            href="/blog"
-            className="mt-3 inline-block font-mono text-sm text-teal hover:underline"
-          >
-            Latest posts →
-          </Link>
-        </Reveal>
-        <Reveal delay={180}>
-          <SectionLabel index="04">Code</SectionLabel>
-          <h3 className="mt-3 font-serif text-xl font-semibold">
-            Analysis in the open
-          </h3>
-          <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-            Replication code, teaching labs, and works in progress on GitHub.
-          </p>
-          <Link
-            href="/code"
-            className="mt-3 inline-block font-mono text-sm text-teal hover:underline"
-          >
-            See what I&apos;m building →
-          </Link>
-        </Reveal>
-      </section>
+          <p className="mt-5 text-lg text-(--card-vermilion)">→</p>
+        </Link>
 
-      {/* Now */}
-      <section className="border-t border-rule py-16">
-        <Reveal>
-          <SectionLabel>Now</SectionLabel>
-          <div className="prose-site mt-4 max-w-2xl">
-            <p>
-              I&apos;m finishing my dissertation (defense expected early 2027)
-              and looking for roles where careful measurement meets real
-              decisions — in global health policy, multilateral organizations,
-              and research-driven teams. If that sounds like your work,{" "}
-              <a href={`mailto:${site.email}`}>I&apos;d love to hear from you</a>.
+        <Link
+          href="/code"
+          className="bn-card flex flex-col bg-(--card-cobalt) text-(--panel-ink) transition-transform hover:-translate-y-1 lg:col-span-3"
+        >
+          <p className="bn-label">Code / GitHub</p>
+          <h3 className="bn-display mt-6 text-3xl">Analysis in the open</h3>
+          <p className="mt-4 flex-1 text-sm leading-relaxed opacity-80">
+            Replication code and teaching labs.
+          </p>
+          <p className="bn-label mt-5">github.com/{site.githubUser} →</p>
+        </Link>
+      </div>
+
+      {/* Row 4: now — cream postcard */}
+      <section className="bn-card mt-4 bg-(--ink) text-(--card-ink)">
+        <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
+          <div className="max-w-xl">
+            <p className="bn-label">Now — Summer 2026</p>
+            <h3 className="bn-display mt-5 text-3xl">
+              Finishing the dissertation. Open to what&apos;s next.
+            </h3>
+            <p className="mt-4 text-sm leading-relaxed opacity-80">
+              Defense expected early 2027. Looking for roles where careful
+              measurement meets real decisions — global health policy,
+              multilateral organizations, research-driven teams.
             </p>
+            <a
+              href={`mailto:${site.email}`}
+              className="bn-label mt-6 inline-block border-b-2 border-current pb-1 hover:opacity-70"
+            >
+              Write to me →
+            </a>
           </div>
-        </Reveal>
+          <div className="w-full max-w-[14rem]">
+            <p className="bn-stamp">
+              On the market
+              <br />
+              2026–27
+            </p>
+            <div className="bn-lines mt-8" aria-hidden />
+          </div>
+        </div>
       </section>
     </div>
   );

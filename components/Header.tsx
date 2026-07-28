@@ -16,7 +16,7 @@ export default function Header() {
         >
           {site.name}
         </Link>
-        <nav className="flex gap-5 text-sm">
+        <nav className="flex gap-5 font-mono text-xs lowercase tracking-wider">
           {nav.map((item) => {
             const active =
               pathname === item.href || pathname.startsWith(item.href + "/");
