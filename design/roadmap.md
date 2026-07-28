@@ -23,37 +23,47 @@ healthsystems.vercel.app (field-manual).
 
 ---
 
+## End-state vision (what "done" means per teaching package)
+
+The completed econometrics package = lab modules + **a teaching video series**
+(entry-level econometrics for health policy) with accompanying slides/animations,
+episode-paired to modules, worked code examples, grounded in real health policy/
+global health papers. The completed knobs package = the site + **a control-knobs
+video series** grounded in the health systems literature, likewise page-paired.
+Videos are the capstone, **not** Phase 1 work — foundations begin Phase 2.
+
 ## Phase 1 — Application season (now → mid-Oct 2026)
 
-Six priorities, in Austin's order:
+Five priorities. P1 and P2 are the twin #1s; P4 and P5 are the site-level focus.
 
-### P1. Dissertation drafts 🖊 (with session support)
+### P1. Dissertation drafts 🖊 (with session support) — top priority
 Finish the three paper drafts as far as possible with **finalized tables and
 figures**. Session-supportable: figure/table design in the house style, replication
-package structure and cleanup, prose editing. The drafts gate P2's PDFs.
+package structure and cleanup, prose editing. The drafts gate P3's PDFs.
 
-### P2. Research pages — legible, succinct, why-it-matters
+### P2. Blog — 5 posts by mid-Oct, one every 2 weeks 🖊 — top priority
+Cadence is the commitment: **one completed, published post every two weeks**
+starting now (≈5 by mid-Oct). Session-supportable: drafting support, data-story
+figures in house style, page restyle, logo optimization. Candidate arc: (1) what
+a hazard ratio is — the title essay; (2) the childcare–caregiving channel (Paper
+1 for civilians); (3) who delivers your delivery (Paper 2); (4) machines vs.
+caregivers (Paper 3 setup); (5) an econometrics-in-plain-English piece that
+cross-links the labs.
+
+### P3. Research pages — legible, succinct, why-it-matters
 Rework each paper page to be maximally readable while staying short: tightened
 narrative that leads with why the research matters, finalized figures rendered in
 the blueprint style, working-paper **PDF buttons** (`public/papers/<slug>.pdf`),
 and **links to the reproduction package for each paper** (decide per paper: public
 repo vs. "available on request" until publishable). Abstract + BibTeX blocks.
 
-### P3. Blog — 5–6 posts live by mid-Oct 🖊 (with session support)
-Target five to six published posts on Substack, surfaced by the (restyled) OHR
-index page. Session-supportable: drafting support, data-story figures in house
-style, page restyle, logo optimization. Candidate arc: (1) what a hazard ratio is
-— the title essay; (2) the childcare–caregiving channel (Paper 1 for civilians);
-(3) who delivers your delivery (Paper 2); (4) machines vs. caregivers (Paper 3
-setup); (5) why nursing homes are always understaffed; (6) an econometrics-in-
-plain-English piece that cross-links the labs.
-
-### P4. Econometrics labs — legibility + interactivity across the core sequence
-Revise the live modules for **maximum legibility** (13" screen fit, column/TOC
-widths, code size, plot sizing, the 5 bare `theme_minimal()` plots, shared
-`theme_house()` include) and **deepen interactivity** — every estimation and
-inference concept gets a manipulable component, not just run-this-code blocks.
-Content coverage for this phase, in order:
+### P4. Econometrics labs — first-half content COMPLETE at site level
+All site-level content done by end of Phase 1 for the non-causal half of the
+curriculum, with **maximum legibility** (13" screen fit, column/TOC widths, code
+size, plot sizing, the 5 bare `theme_minimal()` plots, shared `theme_house()`
+include) and **deep interactivity** — every estimation and inference concept gets
+a manipulable component (resample buttons, vary-n sliders, cluster toggles, ICC
+dials), not just run-this-code blocks. Coverage, in order:
 1. **OLS estimation & inference** — revise modules 1–3 (existing)
 2. **Non-linear models** — new module: binary outcomes, logit/probit, marginal
    effects, count models (fills the module-4 gap)
@@ -61,33 +71,19 @@ Content coverage for this phase, in order:
 4. **Multi-level models** — new module: hierarchical structure, variance
    decomposition, when RE is a model vs. a fix (direct tie to Paper 2's
    facility/provider/delivery decomposition)
-(The causal-inference sequence — randomization, DiD, RD, IV — moves to Phase 2;
-PHS 2000B materials remain staged for it.)
+(The causal-inference sequence — randomization, DiD, RD, IV — is the second half,
+Phase 2; PHS 2000B materials remain staged for it.)
 
-### P5. HS Knobs site — legibility, functionality, literature, UX
-Make the site **cleaner to use, read, and learn from**: the C1 legibility pass
-(gauge/knob label sizes, contrast, scenario-card density, effect-level visual
-distinction), a **literature review pass** over the 45 papers and scenario ratings
-(verify, fill the 3 gaps, tighten macro-takeaways) 🖊-assisted, feature review of
-what's confusing (compare mode discoverability, metric filtering), and selected
-new functionality from its roadmap (effect-level tints; earliest useful pieces of
-search/filter).
+### P5. HS Knobs site — DONE: legibility, functionality, literature, UX
+Site complete by end of Phase 1 — **cleaner to use, read, and learn from**: the
+C1 legibility pass (gauge/knob label sizes, contrast, scenario-card density,
+effect-level visual distinction), a **literature review pass** over the 45 papers
+and scenario ratings (verify, fill the 3 gaps, tighten macro-takeaways)
+🖊-assisted, feature review of what's confusing (compare-mode discoverability,
+metric filtering), and selected new functionality from its roadmap (effect-level
+tints; earliest useful pieces of search/filter).
 
-### P6. Teaching video series — foundations for both properties
-The goal: **two video series** — (a) entry-level econometrics for health policy,
-(b) the control knobs framework — each episode paired with a lab module or knob
-page, with worked code examples, and **grounded in real papers** from the health
-policy/global health and health systems literatures respectively.
-Phase 1 scope (production continues into Phase 2):
-- Curriculum map: episode list ↔ module/page pairings for both series
-- Scripts for the first 2–3 episodes of each 🖊-assisted
-- Slide/animation pipeline: field-manual PPTX template updated (pulls item 10
-  forward) + animated figures derived from the sites' own diagrams
-- Production decisions: recording setup, editing workflow, YouTube channel,
-  embed pattern on labs/knobs pages
-- 🖊 Recording/VO is Austin-owned and expected to land in Phase 2
-
-**Supporting Phase 1 items (smaller, slot between the six):** homepage/site
+**Supporting Phase 1 items (smaller, slot between the five):** homepage/site
 legibility + copy pass (A2); code page curation + repo READMEs (A6); OG images,
 sitemap, favicon, analytics, knobs.arwtucker.com DNS (A7).
 
@@ -95,8 +91,10 @@ sitemap, favicon, analytics, knobs.arwtucker.com DNS (A7).
 
 ## Phase 2 — Winter 2026–27
 
-7. **Video production** — record/edit/publish the first episodes of both series;
-   embed on labs + knobs pages.
+7. **Video series foundations + production** — curriculum map (episode ↔
+   module/page pairings for both series), scripts 🖊-assisted, slide/animation
+   pipeline (forces the PPTX template alignment), recording setup + YouTube
+   channel; record/edit/publish first episodes and embed on labs + knobs pages.
 8. **Labor of Health explorable** (care.arwtucker.com) — the dissertation as a
    living system: policy levers (school closures, immigration, wages) → workforce
    → delivery → outcomes, parameterized by the papers' actual estimates. Ready
@@ -139,9 +137,10 @@ modules; causal sequence in Phase 2. Interactivity bar: each concept gets a
 manipulable component (sliders/toggles driving webR plots — e.g. resample
 buttons, vary-n sliders, cluster-count toggles, ICC dials for multilevel).
 
-### Video series (new workstream)
+### Video series (capstone workstream)
 **State:** nothing exists. **Decision:** produced videos, YouTube-hosted, embedded
-per module/page. **Next:** P6 foundations → Phase 2 production. Two series:
+per module/page — the capstone that completes each teaching package, begun in
+Phase 2 once Phase 1 site content is done. Two series:
 *Econometrics for Health Policy* (paired with lab modules, worked R examples,
 anchored in real global-health papers) and *The Control Knobs* (paired with knob
 pages, anchored in the health-systems literature). Slides/animations reuse the
@@ -186,3 +185,8 @@ stack decided. **Next:** Phase 3 item 12.
   legibility/interactivity across OLS→non-linear→longitudinal→multilevel, knobs
   legibility/functionality/literature, video-series foundations. Causal-inference
   modules and Labor explorable shifted to Phase 2.
+- 2026-07-28 (later) — Clarified: videos are the end-state capstone per teaching
+  package, not Phase 1 work (foundations move to Phase 2). Phase 1 = five
+  priorities; twin #1s are dissertation writing and the biweekly blog cadence
+  (5 posts by mid-Oct); site-level focus is completing the labs first half and
+  the knobs pass.
