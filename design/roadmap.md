@@ -20,6 +20,12 @@ healthsystems.vercel.app (field-manual).
   is an RSS-fed index (already built).
 - **Content vs. build.** 🖊 marks Austin-owned content work (writing, research,
   recording); everything else is buildable in-session. They run in parallel.
+- **Where work happens.** Writing projects live in their own repos/sessions —
+  blog drafting in **HealthPolicyStudio**, dissertation work in the paper repos
+  (NursingHomeResearch, DeliveryObservations, etc.). Sessions in **this repo**
+  focus on site-level elements only: presentation, functionality, and the written
+  content that lands on site pages. P1/P2 appear here as milestones to track,
+  not work to do here.
 
 ---
 
