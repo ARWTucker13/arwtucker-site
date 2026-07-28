@@ -1,156 +1,188 @@
 # Master Ecosystem Roadmap
 
 The full teaching/research web ecosystem, one component at a time.
-Drafted 2026-07-28 with all scaffolding live: arwtucker.com (bento),
-labs.arwtucker.com + healthsystems.vercel.app (field-manual).
+Drafted 2026-07-28; Phase 1 revised same day to Austin's priorities.
+Scaffolding live: arwtucker.com (bento), labs.arwtucker.com +
+healthsystems.vercel.app (field-manual).
 
 ## Principles
 
 - **Committee-first sequencing.** Austin is on the 2026–27 market; applications go
-  out Sept–Nov 2026. Everything a hiring committee will see ships by **mid-Oct 2026**
-  (the Phase 1 line below). Depth and new properties follow.
+  out Sept–Nov 2026. The Phase 1 targets below aim at **mid-Oct 2026**.
 - **One design language.** Bento (personal site) + field-manual (technical/teaching
   material). Spec: `design/field-manual-style-kit.md`. The PPTX/Quarto template
-  system in TeachingDecks gets updated to match (item 10) — no palette forks.
-- **Two stacks only.** Quarto/webR for document-like teaching (labs, sessions);
-  Next.js for app-like interactives (hs-site, role-plays, explorables). The Flask
-  TB sim gets rebuilt as a Next mini-app when its turn comes (item 15); no new stacks.
+  system in TeachingDecks gets aligned to it — no palette forks.
+- **Two stacks only.** Quarto/webR for document-like teaching; Next.js for app-like
+  interactives. The Flask TB sim gets rebuilt as a Next mini-app in Phase 3.
 - **Subdomains under arwtucker.com.** labs.✓ · knobs. (hs-site) · care. (Labor of
-  Health) · sections. (interactive sessions) · innovation. — the personal site is
-  the hub that links them all.
-- **Blog is Substack-canonical.** Writing happens on Substack (email list from day
-  one); the site's blog page is a well-designed RSS-fed index (already built).
-- **Content vs. build.** Items marked 🖊 are Austin-owned content work (writing,
-  recording, finalizing drafts); everything else is buildable in-session. Content
-  and build tasks within a phase run in parallel.
+  Health) · sections. (interactive sessions) · innovation. — personal site as hub.
+- **Blog is Substack-canonical.** Writing happens on Substack; the site's blog page
+  is an RSS-fed index (already built).
+- **Content vs. build.** 🖊 marks Austin-owned content work (writing, research,
+  recording); everything else is buildable in-session. They run in parallel.
 
 ---
 
-## Ordered priority list
+## Phase 1 — Application season (now → mid-Oct 2026)
 
-### Phase 1 — Application season (now → mid-Oct 2026)
+Six priorities, in Austin's order:
 
-1. **Research pages deep-dive** — per-paper narrative expansion beyond the four
-   blocks, PDF buttons wired to `public/papers/<slug>.pdf`, one blueprint figure
-   per paper, abstract + BibTeX; copy edit. 🖊 finalize working-paper PDFs.
-2. **Homepage + site legibility/copy pass** — mono body sizing on dark ground,
-   card grid at 768–1100px widths, copy edit every card.
-3. **Blog launch** — bento restyle of the OHR index page, optimize/replace the
-   753 KB logo. 🖊 write 2–3 Substack posts (the page is empty until then).
-4. **Code page curation** — pinned repo list in `content/`, better descriptions,
-   READMEs for the four public repos (they're portfolio surface now).
-5. **Site infrastructure** — OG images, sitemap (excluding /lab), favicon decision
-   (OHR logo vs. new bento mark), contrast audit, Vercel analytics, and DNS:
-   point knobs.arwtucker.com at hs-site.
-6. **Labs polish** — legibility/screen-fit on 13" screens (column/TOC widths, code
-   size, plot canvas), fix the 5 bare `theme_minimal()` plots, factor the
-   duplicated `theme_house()` into a shared include; copy pass over 5 modules.
+### P1. Dissertation drafts 🖊 (with session support)
+Finish the three paper drafts as far as possible with **finalized tables and
+figures**. Session-supportable: figure/table design in the house style, replication
+package structure and cleanup, prose editing. The drafts gate P2's PDFs.
 
-**Mid-Oct 2026 line: everything above is what committees see. Ship it.**
+### P2. Research pages — legible, succinct, why-it-matters
+Rework each paper page to be maximally readable while staying short: tightened
+narrative that leads with why the research matters, finalized figures rendered in
+the blueprint style, working-paper **PDF buttons** (`public/papers/<slug>.pdf`),
+and **links to the reproduction package for each paper** (decide per paper: public
+repo vs. "available on request" until publishable). Abstract + BibTeX blocks.
 
-### Phase 2 — Winter 2026–27 (teaching depth + flagship)
+### P3. Blog — 5–6 posts live by mid-Oct 🖊 (with session support)
+Target five to six published posts on Substack, surfaced by the (restyled) OHR
+index page. Session-supportable: drafting support, data-story figures in house
+style, page restyle, logo optimization. Candidate arc: (1) what a hazard ratio is
+— the title essay; (2) the childcare–caregiving channel (Paper 1 for civilians);
+(3) who delivers your delivery (Paper 2); (4) machines vs. caregivers (Paper 3
+setup); (5) why nursing homes are always understaffed; (6) an econometrics-in-
+plain-English piece that cross-links the labs.
 
-7. **Labs causal-inference sequence** — Module 4 (binary outcomes) + randomization,
-   DiD, RD, IV. Source material already staged in TeachingDecks: PHS 2000B IV/RDD
-   labs, GHP 525 labs 11–12, problem sets with solutions.
-8. **Labor of Health explorable** (care.arwtucker.com) — new Next.js repo. The
-   dissertation as public scholarship: the care supply chain as a living system.
-   Readers pull policy levers (school closures, immigration restrictions, wages)
-   and watch workforce → delivery → outcomes respond, parameterized by the actual
-   estimates from the three papers. Bento × blueprint tokens. Doubles as job-talk
-   material — build before spring flyouts.
-9. **Knobs: country case studies + legibility** — the case-study schema + 2–3
-   gold-standard cases (per hs-site CLAUDE.md), plus the C1 legibility pass
-   (9px gauge labels, 10px knob labels, dusty-gold contrast).
-10. **Template system → field-manual** — update `templates/build_template.py`
-    tokens/fonts (automate the Georgia→Source Serif swap), align
-    `templates/quarto-theme.scss` with the labs theme, single-source the theme
-    (or a documented sync step) so the two copies stop drifting.
+### P4. Econometrics labs — legibility + interactivity across the core sequence
+Revise the live modules for **maximum legibility** (13" screen fit, column/TOC
+widths, code size, plot sizing, the 5 bare `theme_minimal()` plots, shared
+`theme_house()` include) and **deepen interactivity** — every estimation and
+inference concept gets a manipulable component, not just run-this-code blocks.
+Content coverage for this phase, in order:
+1. **OLS estimation & inference** — revise modules 1–3 (existing)
+2. **Non-linear models** — new module: binary outcomes, logit/probit, marginal
+   effects, count models (fills the module-4 gap)
+3. **Longitudinal data** — revise/extend module 6 (FE/RE, within/between)
+4. **Multi-level models** — new module: hierarchical structure, variance
+   decomposition, when RE is a model vs. a fix (direct tie to Paper 2's
+   facility/provider/delivery decomposition)
+(The causal-inference sequence — randomization, DiD, RD, IV — moves to Phase 2;
+PHS 2000B materials remain staged for it.)
 
-### Phase 3 — Spring/summer 2027 (new properties + media)
+### P5. HS Knobs site — legibility, functionality, literature, UX
+Make the site **cleaner to use, read, and learn from**: the C1 legibility pass
+(gauge/knob label sizes, contrast, scenario-card density, effect-level visual
+distinction), a **literature review pass** over the 45 papers and scenario ratings
+(verify, fill the 3 gaps, tighten macro-takeaways) 🖊-assisted, feature review of
+what's confusing (compare mode discoverability, metric filtering), and selected
+new functionality from its roadmap (effect-level tints; earliest useful pieces of
+search/filter).
 
-11. **Interactive section sessions** (sections.arwtucker.com) — start with the two
-    born-interactive GENED 1063 weeks: **Zika role-play** and **UK sugar-tax
-    negotiation** as Next mini-apps, plus two document-like sessions in Quarto
-    (Cancer Alley, health-systems country cases). This establishes the session
-    format that everything else (FPH quiz, future courses) follows.
-12. **Knobs explainer videos** 🖊 — produced videos: script → storyboard (motion
-    graphics from the site itself + recorded VO) → edit → YouTube embeds. One per
-    knob + one framework overview. Needs a small production pipeline; scripts are
-    buildable, recording is Austin-owned.
-13. **Knobs: Build-Your-System mode** — then search/filter, glossary.
-14. **Innovation in Health** (innovation.arwtucker.com) — three modules:
-    **diffusion & adoption** (interactive diffusion curves, the 17-year lag),
-    **value & priority-setting** (interactive ICERs/league tables — ties to the
-    TB/HIV costing work), **R&D pipeline & incentives** (push/pull funding,
-    neglected-disease market failures). Automation/capital-margin content lives
-    in the Labor site, not here.
-15. **TB mining sim rebuild + FPH quiz** — retire the Flask prototype, rebuild as
-    a Next mini-app under sections. using the established session format; FPH
-    Python quiz follows the same pattern.
+### P6. Teaching video series — foundations for both properties
+The goal: **two video series** — (a) entry-level econometrics for health policy,
+(b) the control knobs framework — each episode paired with a lab module or knob
+page, with worked code examples, and **grounded in real papers** from the health
+policy/global health and health systems literatures respectively.
+Phase 1 scope (production continues into Phase 2):
+- Curriculum map: episode list ↔ module/page pairings for both series
+- Scripts for the first 2–3 episodes of each 🖊-assisted
+- Slide/animation pipeline: field-manual PPTX template updated (pulls item 10
+  forward) + animated figures derived from the sites' own diagrams
+- Production decisions: recording setup, editing workflow, YouTube channel,
+  embed pattern on labs/knobs pages
+- 🖊 Recording/VO is Austin-owned and expected to land in Phase 2
+
+**Supporting Phase 1 items (smaller, slot between the six):** homepage/site
+legibility + copy pass (A2); code page curation + repo READMEs (A6); OG images,
+sitemap, favicon, analytics, knobs.arwtucker.com DNS (A7).
+
+---
+
+## Phase 2 — Winter 2026–27
+
+7. **Video production** — record/edit/publish the first episodes of both series;
+   embed on labs + knobs pages.
+8. **Labor of Health explorable** (care.arwtucker.com) — the dissertation as a
+   living system: policy levers (school closures, immigration, wages) → workforce
+   → delivery → outcomes, parameterized by the papers' actual estimates. Ready
+   before spring flyouts; doubles as job-talk material.
+9. **Labs causal-inference sequence** — randomization, DiD, RD, IV from the staged
+   PHS 2000B / GHP 525 materials; exercise-widget polish (syntax tokens, PASSED
+   stamp) rides along.
+10. **Knobs: country case studies** — schema + 2–3 gold-standard cases, then the
+    automated pipeline (per its CLAUDE.md).
+11. **Template system fully aligned** — whatever P6 didn't already force:
+    build_template.py tokens/fonts automated, single-source Quarto theme.
+
+## Phase 3 — Spring/summer 2027
+
+12. **Interactive section sessions** (sections.arwtucker.com) — Zika role-play +
+    UK sugar-tax negotiation as Next mini-apps; Cancer Alley + health-systems
+    country cases as Quarto sessions. Establishes the session format.
+13. **Knobs: Build-Your-System mode**, search/filter completion, glossary.
+14. **Innovation in Health** (innovation.arwtucker.com) — diffusion & adoption;
+    value & priority-setting (ICERs, league tables — ties to TB/HIV costing
+    work); R&D pipeline & incentives. Automation content lives in Labor site.
+15. **TB mining sim rebuild + FPH quiz** — Next mini-app under sections., using
+    the established session format.
 
 ---
 
 ## Component detail
 
-### 1 · Research pages (arwtucker.com/research)
-**State:** postcard index + cream color-coded paper pages live; scroll reveal;
-four argument blocks per paper. **Next:** item 1. **Depends on:** 🖊 paper drafts
-for PDFs; content expansion can precede final PDFs (mark "draft available on
-request" until then).
+### Research pages (arwtucker.com/research)
+**State:** postcard index + cream color-coded paper pages live. **Next:** P2.
+**Depends on:** P1 drafts for PDFs/figures; reproduction-package visibility
+decision per paper (public repo vs. request). Candidate repos to clean for
+linking: nh-school-closures / NHLaborSubstitution (P1), DeliveryObservations (P2).
 
-### 2 · Econometrics labs (labs.arwtucker.com)
-**State:** 5 modules live (5,500 lines of qmd), field-manual styled, webR graded
-exercises. `_site/` is committed and served verbatim — **must `quarto render`
-before every push** (consider a GitHub Action later). **Next:** item 6, then 7.
-**Assets staged:** TeachingDecks/GHP 525 (labs 1–12, problem sets), PHS2000B (IV,
-RDD). Exercise-widget polish (syntax-highlight tokens, PASSED stamp) rides with 7.
+### Econometrics labs (labs.arwtucker.com)
+**State:** 5 modules live, field-manual styled, webR graded exercises. `_site/`
+committed and served verbatim — **`quarto render` before every push** (CI render
+worth adding during P4). **Next:** P4 revision + new non-linear and multilevel
+modules; causal sequence in Phase 2. Interactivity bar: each concept gets a
+manipulable component (sliders/toggles driving webR plots — e.g. resample
+buttons, vary-n sliders, cluster-count toggles, ICC dials for multilevel).
 
-### 3 · Interactive section sessions (sections.arwtucker.com — new)
-**State:** 13 weeks of raw GENED 1063 material in TeachingDecks (A/B/C convention,
-8 weeks with decks); zero conversion. **Decision:** hybrid stack — Quarto for
-document-sessions, Next mini-apps for role-plays/simulations. **Next:** item 11.
-**Format goal:** each session = one self-contained interactive artifact a TF could
-run a section from, or a student could work through solo.
+### Video series (new workstream)
+**State:** nothing exists. **Decision:** produced videos, YouTube-hosted, embedded
+per module/page. **Next:** P6 foundations → Phase 2 production. Two series:
+*Econometrics for Health Policy* (paired with lab modules, worked R examples,
+anchored in real global-health papers) and *The Control Knobs* (paired with knob
+pages, anchored in the health-systems literature). Slides/animations reuse the
+sites' own blueprint figures; PPTX template alignment is a prerequisite.
 
-### 4 · HS Control Knobs (knobs.arwtucker.com)
-**State:** live, field-manual restyled; 50 scenarios, 45 papers, comparisons,
-cross-knob interactions. Own roadmap in its CLAUDE.md. **Next:** DNS (item 5),
-then items 9 → 12 → 13.
+### HS Control Knobs (knobs.arwtucker.com)
+**State:** live, restyled; 50 scenarios, 45 papers. **Next:** P5, then country
+cases (Phase 2), Build-Your-System (Phase 3). DNS move in supporting items.
 
-### 5 · Labor of Health explorable (care.arwtucker.com — new)
-**State:** concept only — but the design language (care-supply-chain FIG_001, the
-bento paper postcards) and the empirical content (three dissertation papers) exist.
-**Decision:** single flagship explorable essay, not a course. **Next:** item 8.
-Structure sketch: five acts mirroring the supply chain — shocks → workforce →
-delivery → outcomes → measurement — each with one interactive figure driven by
-real estimates (0.27 CNA hours per 10pp in-person schooling; −2.4pp post-handoff
-quality; Bartik capital-margin results when ready).
+### Blog — Occupational Hazard Ratios
+**State:** Substack wired, RSS index built, zero posts. **Next:** P3 — 5–6 posts
+by mid-Oct is the pacing item; page restyle is quick by comparison.
 
-### 6 · Innovation in Health (innovation.arwtucker.com — new)
-**State:** concept only. **Decision:** three pillars (diffusion, value, R&D
-incentives). **Next:** item 14, after the sections format exists (reuses its
-interactive-module pattern).
+### Labor of Health explorable (care.arwtucker.com — new)
+**State:** concept + design language + empirical content ready. **Next:** Phase 2
+item 8. Five acts mirroring the supply chain, each one interactive figure driven
+by real estimates (0.27 CNA hours per 10pp in-person schooling; −2.4pp
+post-handoff quality; capital-margin results when ready).
 
-### 7 · Blog — Occupational Hazard Ratios
-**State:** Substack wired, RSS index built, zero posts. **Decision:**
-Substack-canonical. **Next:** item 3. 🖊 Post ideas already implicit in the work:
-the childcare–caregiving channel; what a hazard ratio is (title essay); who takes
-care of us (dissertation overview for civilians).
+### Innovation in Health (innovation.arwtucker.com — new)
+**State:** concept only. **Next:** Phase 3 item 14, reusing the sections pattern.
 
-### 8 · Code / GitHub
-**State:** live API-fed listing. **Next:** item 4. The repos themselves are now
-portfolio surface: econometrics-for-health-policy, hs-site, arwtucker-site need
-real READMEs (with screenshots of the new designs).
+### Interactive sections (sections.arwtucker.com — new)
+**State:** 13 weeks of raw GENED 1063 material staged in TeachingDecks; hybrid
+stack decided. **Next:** Phase 3 item 12.
 
-### 9 · Infrastructure & templates
-**State:** no OG images/sitemap/analytics; TeachingDecks template system on the
-old terracotta palette. **Next:** items 5 and 10. **Decision:** templates move to
-field-manual — one language across screen, slides, and print.
+### Code / GitHub
+**State:** live API-fed listing. **Next:** supporting item — curation + READMEs
+(repos are portfolio surface; reproduction packages make this matter more).
+
+### Infrastructure & templates
+**State:** no OG/sitemap/analytics; templates on old terracotta palette.
+**Next:** supporting items + P6 template pull-forward.
 
 ---
 
 ## Change log
 
-- 2026-07-28 — Roadmap drafted; scaffolding phase complete (bento production on
-  arwtucker.com; field-manual on labs + hs-site; design lab at /lab).
+- 2026-07-28 — Roadmap drafted; scaffolding phase complete.
+- 2026-07-28 — Phase 1 revised to Austin's six priorities: dissertation drafts,
+  research pages with reproduction links, 5–6 blog posts, labs
+  legibility/interactivity across OLS→non-linear→longitudinal→multilevel, knobs
+  legibility/functionality/literature, video-series foundations. Causal-inference
+  modules and Labor explorable shifted to Phase 2.
